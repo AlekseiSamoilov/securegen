@@ -1,6 +1,6 @@
-import type { PasswordSettings, PasswordStrength } from '../types/password';
+import type { IPasswordSettings, IPasswordStrength } from '../types/password';
 
-export const generateSecurePassword = (settings: PasswordSettings): string => {
+export const generateSecurePassword = (settings: IPasswordSettings): string => {
     const { length, lowercase, uppercase, numbers, symbols, excludeSimilar } = settings;
 
     let charset = '';
@@ -22,7 +22,7 @@ export const generateSecurePassword = (settings: PasswordSettings): string => {
     return Array.from(array, byte => charset[byte % charset.length]).join('');
 };
 
-export const calculatePasswordStrength = (password: string): PasswordStrength => {
+export const calculatePasswordStrength = (password: string): IPasswordStrength => {
     if (!password) return { score: 0, label: 'Очень слабый', color: 'text-red-500' };
 
     let score = 0;

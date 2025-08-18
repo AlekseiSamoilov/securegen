@@ -1,4 +1,4 @@
-export interface PasswordSettings {
+export interface IPasswordSettings {
     length: number;
     lowercase: boolean;
     uppercase: boolean;
@@ -7,23 +7,23 @@ export interface PasswordSettings {
     excludeSimilar: boolean;
 }
 
-export interface PasswordEntry {
+export interface IPasswordEntry {
     id: string;
     site: string;
     password: string;
     length: number;
     timestamp: string;
-    settings: PasswordSettings;
+    settings: IPasswordSettings;
 }
 
-export interface PasswordStrength {
+export interface IPasswordStrength {
     score: number;
     label: string;
     color: string;
 }
 
-export interface ExportData {
+export interface IExportData {
     exported_ad: string;
     total_passwords: number;
-    passwords: Omit<PasswordEntry, 'id'>[];
+    passwords: Omit<IPasswordEntry, 'id'>[];
 }
