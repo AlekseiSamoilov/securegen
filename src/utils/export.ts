@@ -1,7 +1,7 @@
-import type { PasswordEntry, ExportData } from '../types/password';
+import type { IPasswordEntry, IExportData } from '../types/password';
 
-export const exportPasswordsAsJSON = (passwords: PasswordEntry[]): void => {
-    const exportData: ExportData = {
+export const exportPasswordsAsJSON = (passwords: IPasswordEntry[]): void => {
+    const exportData: IExportData = {
         exported_ad: new Date().toISOString(),
         total_passwords: passwords.length,
         passwords: passwords.map(p => ({
@@ -19,7 +19,7 @@ export const exportPasswordsAsJSON = (passwords: PasswordEntry[]): void => {
     downloadFile(blob, `passwords_${getCurrentDateString()}.json`);
 };
 
-export const exportPasswordAsCSV = (passwords: PasswordEntry[]): void => {
+export const exportPasswordAsCSV = (passwords: IPasswordEntry[]): void => {
     const headers = ['Site', 'Password', 'Length', 'Created', 'Settings'];
     const rows = passwords.map(p => [
         p.site,
