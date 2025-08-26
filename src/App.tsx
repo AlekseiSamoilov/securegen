@@ -100,7 +100,7 @@ function App() {
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className='bg-white rounded-2xl p-6 shadow-sm border border-apple-gray-200'
+                                    className=' flex flex-col gap-2 bg-white rounded-2xl p-6 shadow-sm border border-apple-gray-200'
                                 >
                                     <input
                                         type="text"
@@ -114,7 +114,7 @@ function App() {
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={handleAddToSession}
-                                        className='w-full bg-gree-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify0center space-x-2'
+                                        className='w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify-center space-x-2'
                                     >
                                         <Plus size={20} />
                                         <span>Добавить в сессию</span>
