@@ -1,16 +1,15 @@
 import { useClipboard } from "../hooks/useClipboard";
 import { IPasswordEntry } from "../types/password";
 import { motion, AnimatePresence } from 'framer-motion';
-import { exportPasswordsAsJSON } from "../utils/export";
-import { pass } from "three/tsl";
-import { Check, Copy, Download, Trash } from "lucide-react";
+import { Check, Copy, Trash } from "lucide-react";
 
 interface ISessionListProps {
     passwords: IPasswordEntry[];
     onClear: () => void;
+    exportComponent?: React.ReactNode;
 }
 
-export const SessionList: React.FC<ISessionListProps> = ({ passwords, onClear }) => {
+export const SessionList: React.FC<ISessionListProps> = ({ passwords, onClear, exportComponent }) => {
     const { copyText, copied } = useClipboard();
 
     if (passwords.length === 0) {
@@ -24,10 +23,6 @@ export const SessionList: React.FC<ISessionListProps> = ({ passwords, onClear })
             </motion.div>
         );
     }
-
-    const handleExport = () => {
-        exportPasswordsAsJSON(passwords);
-    };
 
     const handleClearWithConfirm = () => {
         if (window.confirm('Очистить все пароли из сессии?')) {
@@ -47,16 +42,7 @@ export const SessionList: React.FC<ISessionListProps> = ({ passwords, onClear })
                 </h3>
 
                 <div className="flex space-x-2">
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={handleExport}
-                        className="flex itens-center space-x-2 px-3 py-2 bg-apple-blue-500 text-white rounded-xl hover:bg-apple-blue-600 transition-colors"
-                    >
-                        <Download size={16} />
-                        <span className="text-sm">Экспорт</span>
-                    </motion.button>
-
+                    {exportComponent}
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}

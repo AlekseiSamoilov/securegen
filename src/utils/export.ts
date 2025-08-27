@@ -45,7 +45,7 @@ export const exportPasswordsAsTXT = (passwords: IPasswordEntry[]): void => {
 };
 
 // Экспорт в формате KeePass CSV
-export const exportForKeePass = (passwords: PasswordEntry[]): void => {
+export const exportForKeePass = (passwords: IPasswordEntry[]): void => {
     const headers = ['Account', 'Login Name', 'Password', 'Web Site', 'Comments'];
     const rows = passwords.map(p => [
         p.site,

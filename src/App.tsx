@@ -5,7 +5,7 @@ import { usePasswordGenerator } from './hooks/usePasswordGenerator';
 import { SettingsPanel } from './components/SettingsPanel';
 import { PasswordDisplay } from './components/PasswordDisplay';
 import { SessionList } from './components/SessionList';
-import { rotate } from 'three/tsl';
+import { ExportDropdown } from './components/ExportDropdown';
 
 function App() {
     const {
@@ -132,6 +132,7 @@ function App() {
                             <SessionList
                                 passwords={sessionPasswords}
                                 onClear={clearSession}
+                                exportComponent={<ExportDropdown passwords={sessionPasswords} />}
                             />
                         </motion.div>
                     </div>
