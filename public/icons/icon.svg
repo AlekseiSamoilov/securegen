@@ -1,0 +1,31 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="80" fill="#007AFF"/>
+  <path d="M128 192h256v128H128z" fill="white" opacity="0.9"/>
+  <circle cx="160" cy="224" r="8" fill="#007AFF"/>
+  <circle cx="192" cy="224" r="8" fill="#007AFF"/>
+  <circle cx="224" cy="224" r="8" fill="#007AFF"/>
+  <circle cx="256" cy="224" r="8" fill="#007AFF"/>
+  <circle cx="288" cy="224" r="8" fill="#007AFF"/>
+  <circle cx="320" cy="224" r="8" fill="#007AFF"/>
+  <circle cx="352" cy="224" r="8" fill="#007AFF"/>
+  
+  <circle cx="160" cy="256" r="8" fill="#007AFF"/>
+  <circle cx="192" cy="256" r="8" fill="#007AFF"/>
+  <circle cx="224" cy="256" r="8" fill="#007AFF"/>
+  <circle cx="256" cy="256" r="8" fill="#007AFF"/>
+  <circle cx="288" cy="256" r="8" fill="#007AFF"/>
+  <circle cx="320" cy="256" r="8" fill="#007AFF"/>
+  <circle cx="352" cy="256" r="8" fill="#007AFF"/>
+  
+  <circle cx="160" cy="288" r="8" fill="#007AFF"/>
+  <circle cx="192" cy="288" r="8" fill="#007AFF"/>
+  <circle cx="224" cy="288" r="8" fill="#007AFF"/>
+  <circle cx="256" cy="288" r="8" fill="#007AFF"/>
+  <circle cx="288" cy="288" r="8" fill="#007AFF"/>
+  <circle cx="320" cy="288" r="8" fill="#007AFF"/>
+  <circle cx="352" cy="288" r="8" fill="#007AFF"/>
+  
+  <path d="M128 340h32v32h-32z" fill="white" opacity="0.9" rx="4"/>
+  <path d="M128 340h32v32h-32z" fill="#34C759" rx="4"/>
+  <text x="176" y="362" font-family="system-ui, -apple-system" font-size="24" font-weight="600" fill="white">SecureGen</text>
+</svg>

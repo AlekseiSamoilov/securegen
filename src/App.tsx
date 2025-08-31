@@ -6,6 +6,7 @@ import { SettingsPanel } from './components/SettingsPanel';
 import { PasswordDisplay } from './components/PasswordDisplay';
 import { SessionList } from './components/SessionList';
 import { ExportDropdown } from './components/ExportDropdown';
+import { PWAInstallButton } from './components/PWAInstallButton';
 
 function App() {
     const {
@@ -147,6 +148,8 @@ function App() {
                     </p>
                 </div>
             </footer>
+            
+            <PWAInstallButton />
         </div>
     );
 }
