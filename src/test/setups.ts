@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { vi } from 'vitest'
 
 // Mock для crypto API (для тестов генерации паролей)
-Object.defineProperty(global, 'crypto', {
+Object.defineProperty(globalThis, 'crypto', {
     value: {
         getRandomValues: (arr: Uint8Array) => {
             for (let i = 0; i < arr.length; i++) {
