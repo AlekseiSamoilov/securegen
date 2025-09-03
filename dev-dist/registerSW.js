@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/securegen/dev-sw.js?dev-sw', { scope: '/securegen/', type: 'classic' })

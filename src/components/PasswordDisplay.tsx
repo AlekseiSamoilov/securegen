@@ -1,14 +1,17 @@
 import { motion } from 'framer-motion';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, QrCode } from 'lucide-react';
+import { useState } from 'react';
 import { useClipboard } from '../hooks/useClipboard';
 import { StrengthMeter } from './StrengthMeter';
+import { QRCodeModal } from './QRCodeModal';
 
 interface IPasswordDisplayProps {
     password: string;
 }
 
 export const PasswordDisplay: React.FC<IPasswordDisplayProps> = ({ password }) => {
-    const { copyText, copied } = useClipboard()
+    const { copyText, copied } = useClipboard();
+    const [isQRModalOpen, setIsQRModalOpen] = useState(false);
 
     if (!password) {
         return (
@@ -37,19 +40,31 @@ export const PasswordDisplay: React.FC<IPasswordDisplayProps> = ({ password }) =
                         {password}
                     </code>
 
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => copyText(password)}
-                        className="flex-shrink-0 p-2 bg-apple-blue-500 text-white rounded-xl hover:bg-apple-blue-600 transition-colors"
-                        aria-label="Копировать пароль"
-                    >
-                        {copied ? (
-                            <Check size={20} />
-                        ) : (
-                            <Copy size={20} />
-                        )}
-                    </motion.button>
+                    <div className="flex gap-2">
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setIsQRModalOpen(true)}
+                            className="flex-shrink-0 p-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors"
+                            aria-label="Показать QR-код"
+                        >
+                            <QrCode size={20} />
+                        </motion.button>
+
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => copyText(password)}
+                            className="flex-shrink-0 p-2 bg-apple-blue-500 text-white rounded-xl hover:bg-apple-blue-600 transition-colors"
+                            aria-label="Копировать пароль"
+                        >
+                            {copied ? (
+                                <Check size={20} />
+                            ) : (
+                                <Copy size={20} />
+                            )}
+                        </motion.button>
+                    </div>
                 </div>
 
                 {/* Индикатор копирования */}
@@ -67,6 +82,13 @@ export const PasswordDisplay: React.FC<IPasswordDisplayProps> = ({ password }) =
 
             {/* Индикатор силы пароля */}
             <StrengthMeter password={password} />
+
+            {/* QR-код модал */}
+            <QRCodeModal
+                isOpen={isQRModalOpen}
+                onClose={() => setIsQRModalOpen(false)}
+                password={password}
+            />
         </motion.div>
     )
 }
