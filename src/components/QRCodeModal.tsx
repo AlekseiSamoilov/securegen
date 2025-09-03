@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import QRCode from 'qrcode';
@@ -19,7 +19,7 @@ export const QRCodeModal: React.FC<IQRCodeModalProps> = ({ isOpen, onClose, pass
             setIsLoading(true);
             setError(null);
             setQrDataUrl(null);
-            
+
             QRCode.toDataURL(password, {
                 width: 300,
                 margin: 2,
