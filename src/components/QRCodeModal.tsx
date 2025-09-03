@@ -10,22 +10,29 @@ interface IQRCodeModalProps {
 }
 
 export const QRCodeModal: React.FC<IQRCodeModalProps> = ({ isOpen, onClose, password }) => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
 
     useEffect(() => {
-        if (isOpen && password && canvasRef.current) {
+        if (isOpen && password) {
             setIsLoading(true);
-            QRCode.toCanvas(canvasRef.current, password, {
+            setError(null);
+            setQrDataUrl(null);
+            
+            QRCode.toDataURL(password, {
                 width: 300,
                 margin: 2,
                 color: {
                     dark: '#1f2937',
                     light: '#ffffff'
                 }
-            }).then(() => {
+            }).then((dataUrl) => {
+                setQrDataUrl(dataUrl);
                 setIsLoading(false);
-            }).catch(() => {
+            }).catch((error) => {
+                console.error('QR Code generation failed:', error);
+                setError('Не удалось сгенерировать QR-код');
                 setIsLoading(false);
             });
         }
@@ -68,9 +75,13 @@ export const QRCodeModal: React.FC<IQRCodeModalProps> = ({ isOpen, onClose, pass
                                 <div className="w-[300px] h-[300px] flex items-center justify-center bg-apple-gray-50 rounded-lg">
                                     <div className="animate-spin w-8 h-8 border-2 border-apple-blue-500 border-t-transparent rounded-full"></div>
                                 </div>
-                            ) : (
-                                <canvas ref={canvasRef} />
-                            )}
+                            ) : error ? (
+                                <div className="w-[300px] h-[300px] flex items-center justify-center bg-red-50 rounded-lg">
+                                    <p className="text-red-600 text-center">{error}</p>
+                                </div>
+                            ) : qrDataUrl ? (
+                                <img src={qrDataUrl} alt="QR Code" className="w-[300px] h-[300px]" />
+                            ) : null}
                         </div>
 
                         <div className="text-center">
